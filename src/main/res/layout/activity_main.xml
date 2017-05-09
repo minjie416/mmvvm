@@ -33,14 +33,24 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="insert"
-            android:onClick="click"/>
+            android:text="insert Peron"
+            android:onClick="insert"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="query"
-            android:onClick="click2"/>
+            android:onClick="query"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="update"
+            android:onClick="update"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="delete"
+            android:onClick="delete"/>
 
         <TextView
             android:layout_width="wrap_content"

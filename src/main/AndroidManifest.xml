@@ -24,6 +24,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity"/>
         </activity>
+        <service android:name=".service.CountService">
+            <intent-filter>
+                <action android:name="com.example.minjie.mmvvm.service.CountService"/>
+            </intent-filter>
+        </service>
+
+        <service android:name=".service.CountServiceAIDL">
+            <intent-filter>
+                <action android:name="com.example.minjie.mmvvm.service.CountServiceAIDL"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

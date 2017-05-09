@@ -12,8 +12,8 @@ import com.example.minjie.mmvvm.BR;
 import com.example.minjie.mmvvm.R;
 import com.example.minjie.mmvvm.databinding.ActivityMainBinding;
 import com.example.minjie.mmvvm.model.DaoUtil;
-import com.example.minjie.mmvvm.model.LoveDao;
-import com.example.minjie.mmvvm.model.Shop;
+import com.example.minjie.mmvvm.model.Person;
+import com.example.minjie.mmvvm.model.PersonDaoUtil;
 import com.example.minjie.mmvvm.viewmodel.MainViewModel;
 
 import java.util.List;
@@ -22,10 +22,14 @@ public class MainActivity extends AppCompatActivity {
 
 	private ActivityMainBinding binding;
 	private MainViewModel mainViewModel;
+	int i = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+
+
 		mainViewModel = new MainViewModel(this);
 		mainViewModel.setUrl("http://images2015.cnblogs.com/news/24442/201704/24442-20170418140643727-710809625.png");
 		mainViewModel.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
@@ -40,17 +44,49 @@ public class MainActivity extends AppCompatActivity {
 		binding.setMainVM(mainViewModel);
 
 		DaoUtil.setupDatabase(getBaseContext());
+
+//		TelephonyManager tm = (TelephonyManager) this.getSystemService(TELEPHONY_SERVICE);
+//		tm.getLine1Number();
 	}
 
-	public void click(View view){
-		Shop shop = new Shop();
-		shop.setName("Min");
-		LoveDao.insertLove(shop);
+	public void insert(View view){
+//		Shop shop = new Shop();
+//		shop.setName("Min" + i);
+//		i++;
+		//		LoveDao.insertLove(shop);
+
+		Person p = new Person();
+		p.setName("p" + i);
+		p.setAge(i * 10);
+		i++;
+		PersonDaoUtil.insertPerson(p);
 	}
 
-	public void click2(View view){
-		List<Shop> list = LoveDao.queryAll();
-		Toast.makeText(getBaseContext(), list.get(0).getName(), Toast.LENGTH_SHORT).show();
+	public void query(View view){
+//		List<Shop> list = LoveDao.queryAll();
+//		StringBuilder sb = new StringBuilder("");
+//		for(Shop shop : list){
+//			sb.append(shop.getName() + " ");
+//		}
+//		Toast.makeText(getBaseContext(), sb.toString(), Toast.LENGTH_SHORT).show();
+
+		List<Person> list = PersonDaoUtil.querryAllPerson();
+		if (list != null && list.size() != 0) {
+			StringBuilder sb = new StringBuilder("");
+			for (Person p : list) {
+				sb.append(p.getId() + ":" + p.getName() + ":" + p.getAge() + "\n");
+			}
+			Toast.makeText(getBaseContext(), sb.toString(), Toast.LENGTH_SHORT).show();
+		}
+	}
+
+	public void update(View view){
+		Person p = new Person((long) 1, "bbb", 33);
+		PersonDaoUtil.updatePerson(p);
+	}
+
+	public void delete(View view){
+		PersonDaoUtil.deletePerson((long) 1);
 	}
 
 	public void clickImage(View view){
@@ -61,4 +97,6 @@ public class MainActivity extends AppCompatActivity {
 		Intent intent = new Intent(this, RecyclerActivity.class);
 		this.startActivity(intent);
 	}
+
+
 }
