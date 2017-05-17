@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.Observable;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import com.example.minjie.mmvvm.databinding.ActivityMainBinding;
 import com.example.minjie.mmvvm.model.DaoUtil;
 import com.example.minjie.mmvvm.model.Person;
 import com.example.minjie.mmvvm.model.PersonDaoUtil;
+import com.example.minjie.mmvvm.model.TestP;
 import com.example.minjie.mmvvm.viewmodel.MainViewModel;
 
 import java.util.List;
@@ -94,9 +96,19 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	public void recycler(View view){
+		TestP t = new TestP("AAA", 10);
 		Intent intent = new Intent(this, RecyclerActivity.class);
+		intent.putExtra("test", t);
 		this.startActivity(intent);
 	}
 
+	public void aidl(View view){
+		Intent intent = new Intent(this, AidlActivity.class);
+		this.startActivity(intent);
+	}
 
+	public void personAidl(View view){
+		Intent intent = new Intent(this, PersonAIDLActivity.class);
+		this.startActivity(intent);
+	}
 }

@@ -11,6 +11,10 @@
             name="number"
             type="int"/>
     </data>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,6 +33,17 @@
             android:layout_height="wrap_content"
             android:textSize="30dp"
             android:text="@{mainVM.b}"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="aidl"
+            android:onClick="aidl"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Person aidl"
+            android:onClick="personAidl"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -71,4 +86,5 @@
             android:text="Recycler View"
             android:onClick="recycler"/>
     </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 </layout>

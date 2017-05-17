@@ -24,6 +24,20 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity"/>
         </activity>
+        <activity android:name=".activity.AidlActivity"
+            android:label="AidlActivity V"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity"/>
+        </activity>
+        <activity android:name=".activity.PersonAIDLActivity"
+            android:label="Person AIDL"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity"/>
+        </activity>
         <service android:name=".service.CountService">
             <intent-filter>
                 <action android:name="com.example.minjie.mmvvm.service.CountService"/>
@@ -35,6 +49,15 @@
                 <action android:name="com.example.minjie.mmvvm.service.CountServiceAIDL"/>
             </intent-filter>
         </service>
+
+        <service android:name=".service.PersonAIDLService">
+            <intent-filter>
+                <action android:name="com.example.minjie.mmvvm.service.PersonAIDLService"/>
+            </intent-filter>
+        </service>
+
+        <service android:name=".service.BookManagerService"
+            android:process=":server"/>
     </application>
 
 </manifest>
